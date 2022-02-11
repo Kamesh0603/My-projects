@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Stopwatch</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta width="sscreen-width, initial-scale=1.0">
+        <link rel="Stylesheet" type="text/CSS" href="stopwatch.css">
+    </head>
+    <body>
+        <div class="parent"> 
+        <div id="time">00:00:00</div>
+        <div id="start"><button type="button">Start</button></div>
+        <div id="pause"><button type="submit">Pause</button></div>
+        <div id="reset"><button type="reset">Reset</button></div>
+        </div>
+
+        
+        <script>
+            var display=document.querySelectorAll("div")[1];
+            var start=document.querySelectorAll("div")[2];
+            var pause=document.querySelectorAll("div")[3];
+            var reset=document.querySelectorAll("div")[4];
+            var hrs=0;
+            var mins=0;
+            var secs=1;
+
+            start.addEventListener("click",starter);
+            
+            reset.addEventListener("click",resetter);
+
+            function resetter(event){
+                hrs=0;
+                mins=0;
+                secs=0;
+                display.innerText="Stopped";
+            }
+            function starter(event){
+            var hrscounter=setInterval(function(event){
+               
+                hrs=hrs+1;
+               
+            },3600000);
+            pause.addEventListener("click",function(event){
+                clearInterval(hrscounter,3600000);
+                
+            })
+            reset.addEventListener("click",function(event){
+                clearInterval(hrscounter,3600000);
+                
+            })
+            
+            var minscounter=setInterval(function(event){
+               
+                if(mins>59){
+                    mins=0;
+                }
+                else{mins=mins+1};
+            },60000);
+            pause.addEventListener("click",function(event){
+                clearInterval(minscounter,60000);
+            })
+            reset.addEventListener("click",function(event){
+                clearInterval(minscounter,60000);
+                
+            })
+            var seccounter=setInterval(function(event){
+
+                if(secs>58){
+                    secs=0;
+                }
+                else{secs=secs+1};
+                display.innerText=`${hrs}:${mins}:${secs}`;
+                pause.addEventListener("click",function(event){
+                clearInterval(seccounter,1000);
+            })
+            reset.addEventListener("click",function(event){
+                clearInterval(seccounter,1000);
+                
+            })
+            },1000);
+            
+        }
+        
+            
+       
+
+        </script>
+    </body>
+</html>
