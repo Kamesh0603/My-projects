@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Calc for github</title>
+    <meta lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" type="text/CSS" href="calc.css">
+    </head>
+    <body>
+        <ul>
+            <li class="display">  </li>
+            <li> C </li>
+            <li> / </li>
+            <li> * </li>
+            <li> . </li>
+            <li> 9 </li>
+            <li> 8 </li>
+            <li> 7 </li>
+            <li> + </li>
+            <li> 6 </li>
+            <li> 5 </li>
+            <li> 4 </li>
+            <li> - </li>
+            <li> 3 </li>
+            <li> 2 </li>
+            <li> 1 </li>
+            <li> = </li>
+            <li class="zero"> 0 </li>
+            <!--li class="sign"> A simple Calculator <br><br> - V. Kamesh </li-->
+        </ul>
+        <script>
+            var a=document.querySelectorAll("li");
+            var display = document.querySelector(".display");
+            var body = document.querySelectorAll("body");
+            window.addEventListener("onbeforeunload",function(event){
+                console.log("welcome");
+            })
+            a.forEach((Node) =>{
+                Node.addEventListener("click", function(event){
+                        
+                    var text=Node.innerText.trim("");
+                    if(text=="="){
+                        var answer = eval(display.innerText);
+                        display.innerText=answer;
+                    }
+                    if(text=="C"){
+                        display.innerText=null;
+                    }
+                    if(text!="=" && text!="C"){
+                    display.append(text);
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
