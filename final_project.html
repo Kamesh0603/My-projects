@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> final Project</title>
+    </head>
+    <body>
+        <style>
+            body{
+                font-size: 60px;
+                text-align: center;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .green{
+                color:black;
+            }
+            .animator{
+                color: green;
+                display: inline-block;
+                transform: rotate(20deg);
+                transition-property: all;
+                transition-duration: 300ms;
+                
+            }
+            
+        </style>
+        <h1>Final Project</h1>
+
+        <script>
+         var a=document.querySelector("h1");
+         var b=a.innerText
+         var letters=b.split("");
+         var string=""
+         for(i=0;i<letters.length;i++){
+             var x=letters[i]
+            string=string+`<span class="green">${x}</span>`;
+         }
+         a.innerHTML=string;
+        var newlist=document.querySelectorAll("span"); 
+       
+     newlist.forEach(node=>{
+         node.addEventListener("mouseover",function(event){
+             console.log(this.innerText);
+             this.classList.add("animator");
+         })
+         node.addEventListener("mouseout",function(event){
+             console.log("out");
+             this.classList.remove("animator");
+         })
+     })
+         
+        </script>
+    </body>
+</html>
